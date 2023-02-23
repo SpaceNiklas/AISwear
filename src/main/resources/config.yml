@@ -1,0 +1,28 @@
+# Plugin Name: AISwear
+# Description: A plugin that detects swear words using AI.
+# Author: SpaceNiklas
+# Version: 1.0
+
+# Discord server: https://discord.gg/93DURaJxuf
+
+# Configuration
+black-listed-words:
+  - 'example1'
+  - 'example2'
+  - 'example3'
+
+api-key: 'abc' # Your OpenAI API Key (can be found under https://platform.openai.com/account/api-keys)
+
+swear-message: '&cYou swore! &7If you believe this is a bug please contact an admin.'
+swear-action: '-' # - is default which means no action is run on swear, although you can use any command without the '/'
+# Examples:
+# - ban %player%
+# - kick %player% You swore! Message: %message%
+
+# Placeholders (work for swear message and action):
+#   - %player%
+#   - %message%
+
+# Disclaimer: This is a hobby project, so please keep in mind that the plugin may not work perfectly.
+#             Additionally, there could be outages that may impact its functionality, check the status here: https://status.openai.com.
+#             It may still be smart to have another anti-swear plugin installed as a backup

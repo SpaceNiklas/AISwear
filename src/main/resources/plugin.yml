@@ -1,0 +1,6 @@
+name: AISwear
+version: '${project.version}'
+main: com.spaceniklas.aiswear.Plugin
+api-version: 1.19
+authors: [ SpaceNiklas ]
+description: A plugin using AI technoligy to check messages for swear words.
