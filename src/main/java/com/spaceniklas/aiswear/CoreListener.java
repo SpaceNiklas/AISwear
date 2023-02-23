@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class CoreListener implements Listener {
 
@@ -23,7 +24,12 @@ public class CoreListener implements Listener {
             if (!plugin.getSwearmessage().equalsIgnoreCase("-"))
                 e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getSwearmessage()).replace("%player%", e.getPlayer().getName()).replace("%message%", e.getMessage()));
             if (!plugin.getSwearaction().equalsIgnoreCase("-"))
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), plugin.getSwearaction().replace("%player%", e.getPlayer().getName()).replace("%message%", e.getMessage()));
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), plugin.getSwearaction().replace("%player%", e.getPlayer().getName()).replace("%message%", e.getMessage()));
+                    }
+                }.runTask(plugin);
 
             LogFile.put(e.getPlayer().getUniqueId().toString(), e.getPlayer().getName(), e.getMessage(), plugin);
         } else {

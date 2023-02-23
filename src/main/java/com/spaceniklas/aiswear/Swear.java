@@ -6,9 +6,13 @@ import com.theokanning.openai.completion.CompletionRequest;
 public class Swear {
 
     Plugin plugin;
+    private final OpenAiService service;
 
+    public Swear(Plugin plugin) {
+        this.plugin = plugin;
+        service = new OpenAiService(plugin.getApikey(), 0);
+    }
 
-    private OpenAiService service = new OpenAiService(plugin.getApikey(), 0);
 
     public boolean check(String s) {
         CompletionRequest request = CompletionRequest.builder()
